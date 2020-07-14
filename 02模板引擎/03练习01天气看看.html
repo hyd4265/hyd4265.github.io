@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- 导包 -->
+    <script src="./libs/template-web.js"></script>
+    <script src="./libs/jquery-1.12.4.js"></script>
+</head>
+
+<body>
+    <h2>天气查查查--</h2>
+    <input type="text" placeholder="请输入查询的城市" class="search" />
+    <p class="suggest"></p>
+    <ul class="weather"></ul>
+</body>
+    <script id="box" type="text/html">
+        {{each data.forecast}}
+            <li><!--     要加{{}}-->
+                <span>{{$value.date}}</span>
+                <span>{{$value.high}}</span>
+                <span>{{$value.low}}</span>
+                <span>{{$value.fengxiang}}</span>
+            </li>
+        {{/each}}
+    </script>
+    <script>
+        /* 
+    请求地址：http://wthrcdn.etouch.cn/weather_mini
+    示例：http://wthrcdn.etouch.cn/weather_mini?city=深圳
+    请求方法：get
+    请求参数：city
+    参数名	参数说明	
+     */
+    
+     // 获取用户输入的城市
+     $('.search').keydown(function(e){
+        if(e.keyCode == 13){
+            var arr = $(this).val()
+            $.ajax({
+                url:'http://wthrcdn.etouch.cn/weather_mini',
+                type:'get',
+                dataType:'json',
+                data:'city='+arr,
+                success: function(backData){
+                    // 返回的数据直接backData
+                    console.log(backData)
+                    //添加内容
+                    $('.suggest').text(backData.data.ganmao)
+                    //             id 和 js对象
+                    var brr = template('box',backData)
+                    // 把模板添加到页面
+                    $('.weather').html(brr) ;
+                }
+            });
+        }
+     })
+    </script>
+</body>
+</html>

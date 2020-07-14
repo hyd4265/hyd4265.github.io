@@ -8,23 +8,60 @@
         *{
             margin: 0;
             padding: 0;
+            text-decoration: none;
         }
         body{
-            background-color: skyblue;
+            height: 1080px;
+            background-color: #ccc;
+            background: url('./imges/bg2.jpg') no-repeat;
         }
         .box{
             width: 980px;
             margin: 0 auto;
+        }
+        .top{
+            margin-top: 60px;
+            width: 100%;
             height: 100px;
             background: rgba(0, 0, 0, .3);
             color: #fff;
             line-height: 100px;
             text-align: center;
             font-size: 25px;
+            margin-bottom: 10px;
+        }
+        .box .nav a{
+            flex: 1;
+            display: block;
+            height: 100px;
+            font-size: 25px;
+            text-align: center;
+            line-height: 100px;
+            color: skyblue;
+            background: rgba(0, 0, 0, .3);
+        }
+        .box .nav a:last-child{
+            border-left: 1px solid skyblue;
+        }
+        .nav{
+            display: flex;
+        }
+        .logo{
+            margin: 0 auto;
+            width: 401px;
+            height: 506px;
         }
     </style>
 </head>
 <body>
-    <div class="box">少少的主页</div>
+    <div class="box">
+        <div class="top">少少的主页</div>
+        <div class="nav">
+            <a href="./天知道/天知道.html">天气查询</a>
+            <a href="./02模板引擎/04看笑话plus版.html">看笑话plus版</a>
+        </div>
+        <div class="logo"><a href="https://ssr.163.com/index.html"><img src="./imges/logo.png" alt=""></a></div>
+    </div>
+    
 </body>
 </html>

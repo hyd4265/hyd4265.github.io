@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 导包 -->
+    <script src="./libs/template-web.js"></script>
+</head>
+<body>
+    <!-- 模板 -->
+    <script id="box" type="text/html">
+        <p>{{data.ganmao}}</p>
+        <p>{{data['ganmao']}}</p>
+        <p>{{data.city}}</p>
+        <!-- 遍历 -->
+        <ul><!--         数组  {{$index}}是下标 {{$value}}是内容-->
+            {{each data.forecast}}<!-- $value 内容是对象可以接着用电语法调属性-->
+            <li>{{$index}} {{$value.date}}</li>
+            {{/each}}
+        </ul><!--  if  条件判断语句-->
+        {{if data.wendu>25}}
+            <p>111</p>
+        {{else}}
+            <p>222</p>
+        {{/if}}<!--  结束必须加-->
+    </script>
+    <script>
+        //JSON实例对象
+        var jsonStr = '{"data":{"yesterday":{"date":"2日星期二","high":"高温 32℃","fx":"东南风","low":"低温 26℃","fl":"<![CDATA[3-4级]]>","type":"小雨"},"city":"深圳","forecast":[{"date":"3日星期三","high":"高温 32℃","fengli":"<![CDATA[3-4级]]>","low":"低温 26℃","fengxiang":"东南风","type":"小雨"},{"date":"4日星期四","high":"高温 29℃","fengli":"<![CDATA[3-4级]]>","low":"低温 24℃","fengxiang":"东南风","type":"暴雨"},{"date":"5日星期五","high":"高温 29℃","fengli":"<![CDATA[3-4级]]>","low":"低温 26℃","fengxiang":"南风","type":"大雨"},{"date":"6日星期六","high":"高温 30℃","fengli":"<![CDATA[<3级]]>","low":"低温 27℃","fengxiang":"无持续风向","type":"雷阵雨"},{"date":"7日星期天","high":"高温 31℃","fengli":"<![CDATA[<3级]]>","low":"低温 27℃","fengxiang":"无持续风向","type":"多云"}],"ganmao":"天气转凉，空气湿度较大，较易发生感冒，体质较弱的朋友请注意适当防护。","wendu":"25"},"status":1000,"desc":"OK"}';
+        var objk = JSON.parse(jsonStr);
+        console.log(objk)
+        //调用官方api开始渲染
+        var arr = template('box',objk)
+        // 渲染好的数据添加到页面
+        document.body.innerHTML += arr
+    </script>
+</body>
+</html>

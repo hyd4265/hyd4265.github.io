@@ -1,25 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             text-decoration: none;
         }
-        body{
+
+        #github svg {
+            transition: all 1s;
+            fill: #222;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 0;
+            width: 80px;
+            height: 80px;
+        }
+
+        #github:hover svg {
+            width: 160px;
+            height: 160px;
+        }
+
+        body {
             height: 1080px;
             background-color: #ccc;
             background: url('./imges/bg2.jpg') no-repeat;
         }
-        .box{
+
+        .box {
             width: 980px;
             margin: 0 auto;
         }
-        .top{
+
+        .top {
             margin-top: 60px;
             width: 100%;
             height: 100px;
@@ -30,7 +52,8 @@
             font-size: 25px;
             margin-bottom: 10px;
         }
-        .box .nav a{
+
+        .box .nav a {
             flex: 1;
             display: block;
             height: 100px;
@@ -40,19 +63,23 @@
             color: skyblue;
             background: rgba(0, 0, 0, .3);
         }
-        .box .nav a:last-child{
+
+        .box .nav a:last-child {
             border-left: 1px solid skyblue;
         }
-        .nav{
+
+        .nav {
             display: flex;
         }
-        .logo{
+
+        .logo {
             margin: 0 auto;
             width: 401px;
             height: 506px;
         }
     </style>
 </head>
+
 <body>
     <div class="box">
         <div class="top">少少的主页</div>
@@ -62,6 +89,7 @@
         </div>
         <div class="logo"><a href="https://ssr.163.com/index.html"><img src="./imges/logo.png" alt=""></a></div>
     </div>
-    
+
 </body>
+<script src="./autoload.js"></script>
 </html>
